@@ -1,8 +1,5 @@
-import os, re, sys, subprocess, enum
-
-class Study(enum.Enum):
-    Rau = 1
-    Yuanxia = 2
+import os, re, sys, subprocess
+from common import Study
 
 def segment(study, originals_loc, strokes_loc, output_loc, segmentation_program):
     '''

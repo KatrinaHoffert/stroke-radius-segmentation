@@ -1,9 +1,6 @@
 import os, re, sys, enum
 from dilate import no_error_dilate
-
-class Study(enum.Enum):
-    Rau = 1
-    Yuanxia = 2
+from common import Study
 
 def dilate(study, strokes_loc, ground_truth_loc, output_loc, radius_range):
     '''
