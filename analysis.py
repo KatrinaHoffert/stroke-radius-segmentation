@@ -1,3 +1,8 @@
+'''
+Performs analysis on segmented images, calculating the DSC and GTC.
+The result is creating analysis files, which are tab delimited tables.
+'''
+
 import numpy as np
 import skimage.io, os, os.path, re, sys, enum, itertools
 from common import Study
@@ -217,6 +222,30 @@ def run_gtc(study, segmented_loc, output_file):
                     output.write(str(calculated_gtc))
                     output.write('\n')
 
+
+def sort_file(input_file, output_file, dtype):
+    '''
+    Sorts either a DSC or GTC analysis file, writing it to a new result.
+
+    input_file: Path to the file to sort.
+    output_file: Path to save the newly sorted file (can be the same as the
+    input_file to overwrite).
+    dtype: The dtype of the matrix, defining its structure and header.
+    '''
+    matrix = np.loadtxt(input_file, dtype=dtype, skiprows=1)
+    if dtype == common.yuanxia_dsc_dtype:
+        sorted_matrix = sorted(matrix, key=lambda row: (row['participant_id'], row['file_id'], row['time_pressure'], row['dilation_radius']))
+    elif dtype == common.rau_dsc_dtype:
+        sorted_matrix = sorted(matrix, key=lambda row: (row['participant_id'], row['file_id'], row['dilation_radius']))
+    elif dtype == common.yuanxia_gtc_dtype:
+        sorted_matrix = sorted(matrix, key=lambda row: (row['file_id'], row['time_pressure'], row['dilation_radius']))
+    elif dtype == common.rau_gtc_dtype:
+        sorted_matrix = sorted(matrix, key=lambda row: (row['file_id'], row['dilation_radius']))
+    else:
+        raise 'Invalid dtype'
+
+    np.savetxt(output_file, sorted_matrix, delimiter='\t', fmt=dtype['format_string'], header='\t'.join(dtype['names']))
+
 # Calculate all DSC
 print('Processing Rau\'s strokes:')
 run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_strokes', 'analysis/dsc/rau_strokes.txt')
@@ -229,3 +258,8 @@ run_gtc(Study.Rau, './rau/segmented_points', 'analysis/gtc/rau_points.txt')
 print('\nProcessing Yuanxia\'s points:')
 run_dsc(Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented', 'analysis/dsc/yuanxia.txt')
 run_gtc(Study.Yuanxia, './yuanxia/segmented', 'analysis/gtc/yuanxia.txt')
+
+# The DSC files aren't sorted, so do that now
+sort_file('./analysis/dsc/rau_strokes.txt', './analysis/dsc/rau_strokes.txt', common.rau_dsc_dtype)
+sort_file('./analysis/dsc/rau_points.txt', './analysis/dsc/rau_points.txt', common.rau_dsc_dtype)
+sort_file('./analysis/dsc/yuanxia.txt', './analysis/dsc/yuanxia.txt', common.yuanxia_dsc_dtype)

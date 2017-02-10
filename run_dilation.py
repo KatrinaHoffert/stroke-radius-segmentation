@@ -1,6 +1,10 @@
+'''
+Performs dilation (utilizing the dilate module) on all stroke/point images.
+'''
+
 import os, re, sys, enum
 from dilate import no_error_dilate
-from common import Study
+from common import Study, dilation_radii
 
 def dilate(study, strokes_loc, ground_truth_loc, output_loc, radius_range):
     '''
@@ -48,11 +52,11 @@ def dilate(study, strokes_loc, ground_truth_loc, output_loc, radius_range):
             no_error_dilate(input_image, ground_truth_image, output_image, radius, foreground_label, background_label)
 
 print('Processing Rau\'s strokes')
-dilate(Study.Rau, './rau/strokes', './rau/ground_truth', './rau/dilated_strokes', range(0, 5))
+dilate(Study.Rau, './rau/strokes', './rau/ground_truth', './rau/dilated_strokes', dilation_radii)
 
 print('\nProcessing Rau\'s points')
-dilate(Study.Rau, './rau/points', './rau/ground_truth', './rau/dilated_points', range(0, 5))
+dilate(Study.Rau, './rau/points', './rau/ground_truth', './rau/dilated_points', dilation_radii)
 
 print('\nProcessing Yuanxia\'s points')
-dilate(Study.Yuanxia, './yuanxia/points', './yuanxia/ground_truth', './yuanxia/dilated', range(0, 5))
+dilate(Study.Yuanxia, './yuanxia/points', './yuanxia/ground_truth', './yuanxia/dilated', dilation_radii)
 print()

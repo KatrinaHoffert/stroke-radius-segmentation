@@ -1,3 +1,8 @@
+'''
+Runs the segmentation program on all images, resulting in the creation of
+binary segmentation images.
+'''
+
 import os, re, sys, subprocess
 from common import Study
 

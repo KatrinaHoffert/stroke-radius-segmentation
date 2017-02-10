@@ -1,4 +1,6 @@
-# -*- coding: utf-8 -*-
+'''
+Contains functionality for performing dilation on an image.
+'''
 
 import numpy as np
 import scipy.ndimage
