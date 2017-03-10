@@ -61,11 +61,11 @@ def segment(study, originals_loc, strokes_loc, output_loc, segmentation_program)
         os.remove(created_file_base + '.contours.tif')
 
 print('Processing Rau\'s strokes')
-segment(Study.Rau, './rau/originals', './rau/dilated_strokes', './rau/segmented_strokes', './BoykovMaxFlowGeneric')
+segment(Study.Rau, './rau/originals', './rau/dilated_strokes', './rau/segmented_strokes', './segmentation_programs/BoykovMaxFlowGeneric')
 
 print('\nProcessing Rau\'s points')
-segment(Study.Rau, './rau/originals', './rau/dilated_points', './rau/segmented_points', './BoykovMaxFlowGeneric')
+segment(Study.Rau, './rau/originals', './rau/dilated_points', './rau/segmented_points', './segmentation_programs/BoykovMaxFlowGeneric')
 
 print('\nProcessing Yuanxia\'s strokes')
-segment(Study.Yuanxia, './yuanxia/originals', './yuanxia/dilated', './yuanxia/segmented', '../BoykovMaxFlowGeneric')
+segment(Study.Yuanxia, './yuanxia/originals', './yuanxia/dilated', './yuanxia/segmented', '../segmentation_programs/BoykovMaxFlowGeneric')
 print()
