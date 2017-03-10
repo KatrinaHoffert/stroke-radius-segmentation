@@ -69,13 +69,13 @@ def print_pop_normality(matrix, measure):
     _, p = scipy.stats.normaltest(filtered)
     print('Data is NOT normally distributed with p = %.4f' % p)
 
-def print_kruskal(matrix, measure, dilation_radii):
+def print_friedman(matrix, measure, dilation_radii):
     filtered_by_radi = []
     for radius in dilation_radii:
         filtered_radii = [row[measure] for row in matrix if row['dilation_radius'] == radius]
         filtered_by_radi.append(filtered_radii)
-    _, p_value = scipy.stats.kruskal(*filtered_by_radi)
-    print('Kruskal for %s has p value = %0.4f' % (measure.upper(), p_value))
+    _, p_value = scipy.stats.friedmanchisquare(*filtered_by_radi)
+    print('Friedman test for %s has p value = %0.6f' % (measure.upper(), p_value))
 
 rau_dsc_strokes = np.loadtxt('./analysis/dsc/rau_strokes.txt', dtype=rau_dsc_dtype, skiprows=1)
 rau_dsc_points = np.loadtxt('./analysis/dsc/rau_points.txt', dtype=rau_dsc_dtype, skiprows=1)
@@ -91,8 +91,8 @@ print_wilcoxon(rau_dsc_strokes, 'dsc', 0, 4)
 print_wilcoxon(rau_gtc_strokes, 'gtc', 0, 4)
 print_pop_normality(rau_dsc_strokes, 'dsc')
 print_pop_normality(rau_gtc_strokes, 'gtc')
-print_kruskal(rau_dsc_strokes, 'dsc', dilation_radii)
-print_kruskal(rau_gtc_strokes, 'gtc', dilation_radii)
+print_friedman(rau_dsc_strokes, 'dsc', dilation_radii)
+print_friedman(rau_gtc_strokes, 'gtc', dilation_radii)
 
 print('\nRau\'s points:')
 print_mean_median(rau_dsc_points, 'dsc', dilation_radii)
@@ -101,8 +101,8 @@ print_wilcoxon(rau_dsc_points, 'dsc', 0, 4)
 print_wilcoxon(rau_gtc_points, 'gtc', 0, 4)
 print_pop_normality(rau_dsc_points, 'dsc')
 print_pop_normality(rau_gtc_points, 'gtc')
-print_kruskal(rau_dsc_points, 'dsc', dilation_radii)
-print_kruskal(rau_gtc_points, 'gtc', dilation_radii)
+print_friedman(rau_dsc_points, 'dsc', dilation_radii)
+print_friedman(rau_gtc_points, 'gtc', dilation_radii)
 
 print('\nYuaxia\'s points:')
 print_mean_median(yuanxia_dsc, 'dsc', dilation_radii)
@@ -111,5 +111,5 @@ print_wilcoxon(yuanxia_dsc, 'dsc', 0, 4)
 print_wilcoxon(yuanxia_gtc, 'gtc', 0, 4)
 print_pop_normality(yuanxia_dsc, 'dsc')
 print_pop_normality(yuanxia_gtc, 'gtc')
-print_kruskal(yuanxia_dsc, 'dsc', dilation_radii)
-print_kruskal(yuanxia_gtc, 'gtc', dilation_radii)
+print_friedman(yuanxia_dsc, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc, 'gtc', dilation_radii)
