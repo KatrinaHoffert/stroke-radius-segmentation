@@ -246,7 +246,7 @@ def sort_file(input_file, output_file, dtype):
 
     np.savetxt(output_file, sorted_matrix, delimiter='\t', fmt=dtype['format_string'], header='\t'.join(dtype['names']))
 
-# Calculate all DSC
+print('Analyzing results of Boykov segmentation')
 print('Processing Rau\'s strokes:')
 run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_strokes', 'analysis/dsc/rau_strokes.txt')
 run_gtc(Study.Rau, './rau/segmented_strokes', 'analysis/gtc/rau_strokes.txt')
@@ -263,3 +263,22 @@ run_gtc(Study.Yuanxia, './yuanxia/segmented', 'analysis/gtc/yuanxia.txt')
 sort_file('./analysis/dsc/rau_strokes.txt', './analysis/dsc/rau_strokes.txt', common.rau_dsc_dtype)
 sort_file('./analysis/dsc/rau_points.txt', './analysis/dsc/rau_points.txt', common.rau_dsc_dtype)
 sort_file('./analysis/dsc/yuanxia.txt', './analysis/dsc/yuanxia.txt', common.yuanxia_dsc_dtype)
+print()
+
+print('Analyzing results of OneCut segmentation')
+print('Processing Rau\'s strokes:')
+run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_strokes_onecut', 'analysis/dsc/rau_strokes_onecut.txt')
+run_gtc(Study.Rau, './rau/segmented_strokes_onecut', 'analysis/gtc/rau_strokes_onecut.txt')
+
+print('\nProcessing Rau\'s points:')
+run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_points_onecut', 'analysis/dsc/rau_points_onecut.txt')
+run_gtc(Study.Rau, './rau/segmented_points_onecut', 'analysis/gtc/rau_points_onecut.txt')
+
+print('\nProcessing Yuanxia\'s points:')
+run_dsc(Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented_onecut', 'analysis/dsc/yuanxia_onecut.txt')
+run_gtc(Study.Yuanxia, './yuanxia/segmented_onecut', 'analysis/gtc/yuanxia_onecut.txt')
+
+# The DSC files aren't sorted, so do that now
+sort_file('./analysis/dsc/rau_strokes_onecut.txt', './analysis/dsc/rau_strokes_onecut.txt', common.rau_dsc_dtype)
+sort_file('./analysis/dsc/rau_points_onecut.txt', './analysis/dsc/rau_points_onecut.txt', common.rau_dsc_dtype)
+sort_file('./analysis/dsc/yuanxia_onecut.txt', './analysis/dsc/yuanxia_onecut.txt', common.yuanxia_dsc_dtype)
