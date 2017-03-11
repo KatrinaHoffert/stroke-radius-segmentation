@@ -1,20 +1,3 @@
-Analyzing results of Boykov segmentation
-Processing Rau's strokes:
-Processing file 1625 of 1625
-Processing Rau's points:
-Processing file 1625 of 1625
-Processing Yuanxia's points:
-Processing file 7125 of 7125
-Analyzing results of OneCut segmentation
-Processing Rau's strokes:
-Processing file 1625 of 1625
-Processing Rau's points:
-Processing file 1625 of 1625
-Processing Yuanxia's points:
-Processing file 7125 of 7125
-
-runfile('F:/Dropbox/School/Current/CMPT 400/Code/stats.py', wdir='F:/Dropbox/School/Current/CMPT 400/Code')
-Reloaded modules: common
 Stats for Boykov segmentation
 Rau's strokes:
 Radius 0
