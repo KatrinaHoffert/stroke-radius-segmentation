@@ -1,0 +1,270 @@
+Analyzing results of Boykov segmentation
+Processing Rau's strokes:
+Processing file 1625 of 1625
+Processing Rau's points:
+Processing file 1625 of 1625
+Processing Yuanxia's points:
+Processing file 7125 of 7125
+Analyzing results of OneCut segmentation
+Processing Rau's strokes:
+Processing file 1625 of 1625
+Processing Rau's points:
+Processing file 1625 of 1625
+Processing Yuanxia's points:
+Processing file 7125 of 7125
+
+runfile('F:/Dropbox/School/Current/CMPT 400/Code/stats.py', wdir='F:/Dropbox/School/Current/CMPT 400/Code')
+Reloaded modules: common
+Stats for Boykov segmentation
+Rau's strokes:
+Radius 0
+  Mean DSC: 0.801346
+  Median DSC: 0.832844
+Radius 1
+  Mean DSC: 0.82701
+  Median DSC: 0.867809
+Radius 2
+  Mean DSC: 0.83428
+  Median DSC: 0.883695
+Radius 3
+  Mean DSC: 0.839277
+  Median DSC: 0.888773
+Radius 4
+  Mean DSC: 0.842712
+  Median DSC: 0.893577
+Largest DSC mean difference was between radii 0 and 4 = 0.0414
+Largest DSC median difference was between radii 0 and 4 = 0.0607
+Radius 0
+  Mean GTC: 0.618027
+  Median GTC: 0.561516
+Radius 1
+  Mean GTC: 0.65464
+  Median GTC: 0.665987
+Radius 2
+  Mean GTC: 0.669766
+  Median GTC: 0.689543
+Radius 3
+  Mean GTC: 0.681783
+  Median GTC: 0.715688
+Radius 4
+  Mean GTC: 0.68677
+  Median GTC: 0.730893
+Largest GTC mean difference was between radii 0 and 4 = 0.0687
+Largest GTC median difference was between radii 0 and 4 = 0.1694
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000000
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.000012
+Data is NOT normally distributed with p = 0.0000
+Data is NOT normally distributed with p = 0.0408
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000000
+
+Rau's points:
+Radius 0
+  Mean DSC: 0.698794
+  Median DSC: 0.70564
+Radius 1
+  Mean DSC: 0.716996
+  Median DSC: 0.721419
+Radius 2
+  Mean DSC: 0.730194
+  Median DSC: 0.756569
+Radius 3
+  Mean DSC: 0.748501
+  Median DSC: 0.78202
+Radius 4
+  Mean DSC: 0.764414
+  Median DSC: 0.804764
+Largest DSC mean difference was between radii 0 and 4 = 0.0656
+Largest DSC median difference was between radii 0 and 4 = 0.0991
+Radius 0
+  Mean GTC: 0.522195
+  Median GTC: 0.47216
+Radius 1
+  Mean GTC: 0.564456
+  Median GTC: 0.524027
+Radius 2
+  Mean GTC: 0.571248
+  Median GTC: 0.528045
+Radius 3
+  Mean GTC: 0.580173
+  Median GTC: 0.549512
+Radius 4
+  Mean GTC: 0.586953
+  Median GTC: 0.560843
+Largest GTC mean difference was between radii 0 and 4 = 0.0648
+Largest GTC median difference was between radii 0 and 4 = 0.0887
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000000
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.003507
+Data is NOT normally distributed with p = 0.0000
+Data is NOT normally distributed with p = 0.0015
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000008
+
+Yuaxia's points:
+Radius 0
+  Mean DSC: 0.6297
+  Median DSC: 0.662949
+Radius 1
+  Mean DSC: 0.631805
+  Median DSC: 0.65089
+Radius 2
+  Mean DSC: 0.63482
+  Median DSC: 0.655786
+Radius 3
+  Mean DSC: 0.64224
+  Median DSC: 0.667295
+Radius 4
+  Mean DSC: 0.651039
+  Median DSC: 0.67931
+Largest DSC mean difference was between radii 0 and 4 = 0.0213
+Largest DSC median difference was between radii 1 and 4 = 0.0284
+Radius 0
+  Mean GTC: 0.463333
+  Median GTC: 0.452595
+Radius 1
+  Mean GTC: 0.505592
+  Median GTC: 0.501766
+Radius 2
+  Mean GTC: 0.516025
+  Median GTC: 0.50508
+Radius 3
+  Mean GTC: 0.520318
+  Median GTC: 0.516739
+Radius 4
+  Mean GTC: 0.525987
+  Median GTC: 0.526169
+Largest GTC mean difference was between radii 0 and 4 = 0.0627
+Largest GTC median difference was between radii 0 and 4 = 0.0736
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000001
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.000000
+Data is NOT normally distributed with p = 0.0000
+Data is NOT normally distributed with p = 0.0044
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000000
+
+Stats for OneCut segmentation
+Rau's strokes:
+Radius 0
+  Mean DSC: 0.359806
+  Median DSC: 0.15374
+Radius 1
+  Mean DSC: 0.483448
+  Median DSC: 0.361097
+Radius 2
+  Mean DSC: 0.569157
+  Median DSC: 0.515968
+Radius 3
+  Mean DSC: 0.647791
+  Median DSC: 0.671499
+Radius 4
+  Mean DSC: 0.703132
+  Median DSC: 0.766022
+Largest DSC mean difference was between radii 0 and 4 = 0.3433
+Largest DSC median difference was between radii 0 and 4 = 0.6123
+Radius 0
+  Mean GTC: 0.246527
+  Median GTC: 0.0915912
+Radius 1
+  Mean GTC: 0.325328
+  Median GTC: 0.135128
+Radius 2
+  Mean GTC: 0.387212
+  Median GTC: 0.196925
+Radius 3
+  Mean GTC: 0.45063
+  Median GTC: 0.290139
+Radius 4
+  Mean GTC: 0.499596
+  Median GTC: 0.37595
+Largest GTC mean difference was between radii 0 and 4 = 0.2531
+Largest GTC median difference was between radii 0 and 4 = 0.2844
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000000
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.000018
+Data is NOT normally distributed with p = 0.6200
+Data is NOT normally distributed with p = 0.0000
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000000
+
+Rau's points:
+Radius 0
+  Mean DSC: 0.0957786
+  Median DSC: 0.004298
+Radius 1
+  Mean DSC: 0.145246
+  Median DSC: 0.023013
+Radius 2
+  Mean DSC: 0.213424
+  Median DSC: 0.062394
+Radius 3
+  Mean DSC: 0.309585
+  Median DSC: 0.172395
+Radius 4
+  Mean DSC: 0.38015
+  Median DSC: 0.266528
+Largest DSC mean difference was between radii 0 and 4 = 0.2844
+Largest DSC median difference was between radii 0 and 4 = 0.2622
+Radius 0
+  Mean GTC: 0.0985689
+  Median GTC: 0.0437101
+Radius 1
+  Mean GTC: 0.106487
+  Median GTC: 0.0918663
+Radius 2
+  Mean GTC: 0.137865
+  Median GTC: 0.0938861
+Radius 3
+  Mean GTC: 0.218248
+  Median GTC: 0.146196
+Radius 4
+  Mean GTC: 0.24984
+  Median GTC: 0.156547
+Largest GTC mean difference was between radii 0 and 4 = 0.1513
+Largest GTC median difference was between radii 0 and 4 = 0.1128
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000000
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.000733
+Data is NOT normally distributed with p = 0.0000
+Data is NOT normally distributed with p = 0.0000
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000000
+
+Yuaxia's points:
+Radius 0
+  Mean DSC: 0.141254
+  Median DSC: 0.00477
+Radius 1
+  Mean DSC: 0.147541
+  Median DSC: 0.022873
+Radius 2
+  Mean DSC: 0.177728
+  Median DSC: 0.061244
+Radius 3
+  Mean DSC: 0.22243
+  Median DSC: 0.136731
+Radius 4
+  Mean DSC: 0.271969
+  Median DSC: 0.201102
+Largest DSC mean difference was between radii 0 and 4 = 0.1307
+Largest DSC median difference was between radii 0 and 4 = 0.1963
+Radius 0
+  Mean GTC: 0.262535
+  Median GTC: 0.20008
+Radius 1
+  Mean GTC: 0.241782
+  Median GTC: 0.200293
+Radius 2
+  Mean GTC: 0.248113
+  Median GTC: 0.200565
+Radius 3
+  Mean GTC: 0.260373
+  Median GTC: 0.202139
+Radius 4
+  Mean GTC: 0.27784
+  Median GTC: 0.243575
+Largest GTC mean difference was between radii 1 and 4 = 0.0361
+Largest GTC median difference was between radii 0 and 4 = 0.0435
+Wilcoxon result for DSC between radii 0 and 4 has p = 0.000000
+Wilcoxon result for GTC between radii 0 and 4 has p = 0.281376
+Data is NOT normally distributed with p = 0.0000
+Data is NOT normally distributed with p = 0.0000
+Friedman test for DSC has p value = 0.000000
+Friedman test for GTC has p value = 0.000022
