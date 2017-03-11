@@ -13,6 +13,20 @@ to assist with segmentation. One study used points in addition to strokes.
 The study data must be downloaded separately (due to being large and having many files). See the
 releases in this repo to download.
 
+## A glance at results
+
+### Original
+![](http://i.imgur.com/6sJVxZu.png)
+
+### Stroke image
+![](http://i.imgur.com/wK62uRS.png)
+
+### Segmentation without dilation (DSC = 0.912615)
+![](http://i.imgur.com/aK6PXgO.png)
+
+### Segmentation of radius 4 dilation (DSC = 0.949465)
+![](http://i.imgur.com/8RsuIYd.png)
+
 ## Explaining this repo
 The files in this repo require some explanation, as there's no obvious point to dive in. The files
 are mostly stand alone scripts that each perform a specialized task. These can be run sequentially
