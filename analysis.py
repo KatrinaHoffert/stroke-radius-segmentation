@@ -5,7 +5,7 @@ The result is creating analysis files, which are tab delimited tables.
 
 import numpy as np
 import skimage.io, os, os.path, re, sys, enum, itertools
-from common import Study
+import common
 
 def gtc(files):
     '''
@@ -75,7 +75,7 @@ def run_dsc(study, ground_truth_loc, segmented_loc, output_file):
         output.write('\t')
         output.write('file_id')
         output.write('\t')
-        if study == Study.Yuanxia:
+        if study == common.Study.Yuanxia:
             output.write('time_pressure')
             output.write('\t')
         output.write('dilation_radius')
@@ -91,7 +91,7 @@ def run_dsc(study, ground_truth_loc, segmented_loc, output_file):
             sys.stdout.flush()
 
             # Extract data from file name
-            if study == Study.Rau:
+            if study == common.Study.Rau:
                 file_re = re.search('(\d+)-(\d+)-(\d+)', file)
             else:
                 file_re = re.search('(\d+)-(\d+)-(\d+)-(\d+)', file)
@@ -99,7 +99,7 @@ def run_dsc(study, ground_truth_loc, segmented_loc, output_file):
 
             participant_id = file_re.group(1)
             file_id = file_re.group(2)
-            if study == Study.Yuanxia:
+            if study == common.Study.Yuanxia:
                 time_pressure = file_re.group(3)
                 dilation_radius = file_re.group(4)
             else:
@@ -112,7 +112,7 @@ def run_dsc(study, ground_truth_loc, segmented_loc, output_file):
             output.write('\t')
             output.write(file_id)
             output.write('\t')
-            if study == Study.Yuanxia:
+            if study == common.Study.Yuanxia:
                 output.write(time_pressure)
                 output.write('\t')
             output.write(dilation_radius)
@@ -144,7 +144,7 @@ def run_gtc(study, segmented_loc, output_file):
     files = os.listdir(segmented_loc)
     for file in files:
         # Extract data from file name
-        if study == Study.Rau:
+        if study == common.Study.Rau:
             file_re = re.search('(\d+)-(\d+)-(\d+)', file)
         else:
             file_re = re.search('(\d+)-(\d+)-(\d+)-(\d+)', file)
@@ -152,7 +152,7 @@ def run_gtc(study, segmented_loc, output_file):
 
         participant_ids.add(file_re.group(1))
         file_ids.add(file_re.group(2))
-        if study == Study.Yuanxia:
+        if study == common.Study.Yuanxia:
             time_pressures.add(file_re.group(3))
             dilation_radi.add(file_re.group(4))
         else:
@@ -171,13 +171,13 @@ def run_gtc(study, segmented_loc, output_file):
     dilation_radi = sorted(dilation_radi, key=int)
 
     # Dummy value so that we can actually take the product of this
-    if study == Study.Rau: time_pressures.insert(0, None)
+    if study == common.Study.Rau: time_pressures.insert(0, None)
 
     with open(output_file, 'w') as output:
         # Create header
         output.write('file_id')
         output.write('\t')
-        if study == Study.Yuanxia:
+        if study == common.Study.Yuanxia:
             output.write('time_pressure')
             output.write('\t')
         output.write('dilation_radius')
@@ -198,14 +198,14 @@ def run_gtc(study, segmented_loc, output_file):
 
                         # For the Yuanxia study, skip non-existant files (since they only exist for a
                         # certain time pressure)
-                        if study == Study.Yuanxia and not os.path.exists(file_name): continue
+                        if study == common.Study.Yuanxia and not os.path.exists(file_name): continue
 
                         file_list_for_gtc.insert(len(file_list_for_gtc), file_name)
                         i += 1
 
                     # Skip empty file lists for the Yuanxia study, since that occurs due to files not
                     # overlapping across time pressures
-                    if study == Study.Yuanxia and len(file_list_for_gtc) == 0:
+                    if study == common.Study.Yuanxia and len(file_list_for_gtc) == 0:
                         continue
 
                     print('\rProcessing file', i, 'of', len(files), end='')
@@ -214,7 +214,7 @@ def run_gtc(study, segmented_loc, output_file):
 
                     output.write(file_id)
                     output.write('\t')
-                    if study == Study.Yuanxia:
+                    if study == common.Study.Yuanxia:
                         output.write(time_pressure)
                         output.write('\t')
                     output.write(dilation_radius)
@@ -248,16 +248,16 @@ def sort_file(input_file, output_file, dtype):
 
 print('Analyzing results of Boykov segmentation')
 print('Processing Rau\'s strokes:')
-run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_strokes', 'analysis/dsc/rau_strokes.txt')
-run_gtc(Study.Rau, './rau/segmented_strokes', 'analysis/gtc/rau_strokes.txt')
+run_dsc(common.Study.Rau, './rau/ground_truth', './rau/segmented_strokes', 'analysis/dsc/rau_strokes.txt')
+run_gtc(common.Study.Rau, './rau/segmented_strokes', 'analysis/gtc/rau_strokes.txt')
 
 print('\nProcessing Rau\'s points:')
-run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_points', 'analysis/dsc/rau_points.txt')
-run_gtc(Study.Rau, './rau/segmented_points', 'analysis/gtc/rau_points.txt')
+run_dsc(common.Study.Rau, './rau/ground_truth', './rau/segmented_points', 'analysis/dsc/rau_points.txt')
+run_gtc(common.Study.Rau, './rau/segmented_points', 'analysis/gtc/rau_points.txt')
 
 print('\nProcessing Yuanxia\'s points:')
-run_dsc(Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented', 'analysis/dsc/yuanxia.txt')
-run_gtc(Study.Yuanxia, './yuanxia/segmented', 'analysis/gtc/yuanxia.txt')
+run_dsc(common.Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented', 'analysis/dsc/yuanxia.txt')
+run_gtc(common.Study.Yuanxia, './yuanxia/segmented', 'analysis/gtc/yuanxia.txt')
 
 # The DSC files aren't sorted, so do that now
 sort_file('./analysis/dsc/rau_strokes.txt', './analysis/dsc/rau_strokes.txt', common.rau_dsc_dtype)
@@ -267,16 +267,16 @@ print()
 
 print('Analyzing results of OneCut segmentation')
 print('Processing Rau\'s strokes:')
-run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_strokes_onecut', 'analysis/dsc/rau_strokes_onecut.txt')
-run_gtc(Study.Rau, './rau/segmented_strokes_onecut', 'analysis/gtc/rau_strokes_onecut.txt')
+run_dsc(common.Study.Rau, './rau/ground_truth', './rau/segmented_strokes_onecut', 'analysis/dsc/rau_strokes_onecut.txt')
+run_gtc(common.Study.Rau, './rau/segmented_strokes_onecut', 'analysis/gtc/rau_strokes_onecut.txt')
 
 print('\nProcessing Rau\'s points:')
-run_dsc(Study.Rau, './rau/ground_truth', './rau/segmented_points_onecut', 'analysis/dsc/rau_points_onecut.txt')
-run_gtc(Study.Rau, './rau/segmented_points_onecut', 'analysis/gtc/rau_points_onecut.txt')
+run_dsc(common.Study.Rau, './rau/ground_truth', './rau/segmented_points_onecut', 'analysis/dsc/rau_points_onecut.txt')
+run_gtc(common.Study.Rau, './rau/segmented_points_onecut', 'analysis/gtc/rau_points_onecut.txt')
 
 print('\nProcessing Yuanxia\'s points:')
-run_dsc(Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented_onecut', 'analysis/dsc/yuanxia_onecut.txt')
-run_gtc(Study.Yuanxia, './yuanxia/segmented_onecut', 'analysis/gtc/yuanxia_onecut.txt')
+run_dsc(common.Study.Yuanxia, './yuanxia/ground_truth', './yuanxia/segmented_onecut', 'analysis/dsc/yuanxia_onecut.txt')
+run_gtc(common.Study.Yuanxia, './yuanxia/segmented_onecut', 'analysis/gtc/yuanxia_onecut.txt')
 
 # The DSC files aren't sorted, so do that now
 sort_file('./analysis/dsc/rau_strokes_onecut.txt', './analysis/dsc/rau_strokes_onecut.txt', common.rau_dsc_dtype)
