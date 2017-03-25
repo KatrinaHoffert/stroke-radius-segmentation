@@ -84,6 +84,14 @@ rau_gtc_strokes = np.loadtxt('./analysis/gtc/rau_strokes.txt', dtype=rau_gtc_dty
 rau_gtc_points = np.loadtxt('./analysis/gtc/rau_points.txt', dtype=rau_gtc_dtype, skiprows=1)
 yuanxia_gtc = np.loadtxt('./analysis/gtc/yuanxia.txt', dtype=yuanxia_gtc_dtype, skiprows=1)
 
+# Time pressure versions
+yuanxia_dsc15 = yuanxia_dsc[yuanxia_dsc['time_pressure'] == 15]
+yuanxia_gtc15 = yuanxia_gtc[yuanxia_gtc['time_pressure'] == 15]
+yuanxia_dsc25 = yuanxia_dsc[yuanxia_dsc['time_pressure'] == 25]
+yuanxia_gtc25 = yuanxia_gtc[yuanxia_gtc['time_pressure'] == 25]
+yuanxia_dsc40 = yuanxia_dsc[yuanxia_dsc['time_pressure'] == 40]
+yuanxia_gtc40 = yuanxia_gtc[yuanxia_gtc['time_pressure'] == 40]
+
 print('Stats for Boykov segmentation')
 print('Rau\'s strokes:')
 print_mean_median(rau_dsc_strokes, 'dsc', dilation_radii)
@@ -105,15 +113,35 @@ print_pop_normality(rau_gtc_points, 'gtc')
 print_friedman(rau_dsc_points, 'dsc', dilation_radii)
 print_friedman(rau_gtc_points, 'gtc', dilation_radii)
 
-print('\nYuaxia\'s points:')
-print_mean_median(yuanxia_dsc, 'dsc', dilation_radii)
-print_mean_median(yuanxia_gtc, 'gtc', dilation_radii)
-print_wilcoxon(yuanxia_dsc, 'dsc', 0, 4)
-print_wilcoxon(yuanxia_gtc, 'gtc', 0, 4)
-print_pop_normality(yuanxia_dsc, 'dsc')
-print_pop_normality(yuanxia_gtc, 'gtc')
-print_friedman(yuanxia_dsc, 'dsc', dilation_radii)
-print_friedman(yuanxia_gtc, 'gtc', dilation_radii)
+print('\nYuaxia\'s points (time pressure 15):')
+print_mean_median(yuanxia_dsc15, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc15, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc15, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc15, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc15, 'dsc')
+print_pop_normality(yuanxia_gtc15, 'gtc')
+print_friedman(yuanxia_dsc15, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc15, 'gtc', dilation_radii)
+
+print('\nYuaxia\'s points (time pressure 25):')
+print_mean_median(yuanxia_dsc25, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc25, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc25, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc25, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc25, 'dsc')
+print_pop_normality(yuanxia_gtc25, 'gtc')
+print_friedman(yuanxia_dsc25, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc25, 'gtc', dilation_radii)
+
+print('\nYuaxia\'s points (time pressure 40):')
+print_mean_median(yuanxia_dsc40, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc40, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc40, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc40, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc40, 'dsc')
+print_pop_normality(yuanxia_gtc40, 'gtc')
+print_friedman(yuanxia_dsc40, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc40, 'gtc', dilation_radii)
 print()
 
 rau_dsc_strokes_onecut = np.loadtxt('./analysis/dsc/rau_strokes_onecut.txt', dtype=rau_dsc_dtype, skiprows=1)
@@ -122,6 +150,14 @@ yuanxia_dsc_onecut = np.loadtxt('./analysis/dsc/yuanxia_onecut.txt', dtype=yuanx
 rau_gtc_strokes_onecut = np.loadtxt('./analysis/gtc/rau_strokes_onecut.txt', dtype=rau_gtc_dtype, skiprows=1)
 rau_gtc_points_onecut = np.loadtxt('./analysis/gtc/rau_points_onecut.txt', dtype=rau_gtc_dtype, skiprows=1)
 yuanxia_gtc_onecut = np.loadtxt('./analysis/gtc/yuanxia_onecut.txt', dtype=yuanxia_gtc_dtype, skiprows=1)
+
+# Time pressure versions
+yuanxia_dsc_onecut15 = yuanxia_dsc_onecut[yuanxia_dsc['time_pressure'] == 15]
+yuanxia_gtc_onecut15 = yuanxia_gtc_onecut[yuanxia_gtc['time_pressure'] == 15]
+yuanxia_dsc_onecut25 = yuanxia_dsc_onecut[yuanxia_dsc['time_pressure'] == 25]
+yuanxia_gtc_onecut25 = yuanxia_gtc_onecut[yuanxia_gtc['time_pressure'] == 25]
+yuanxia_dsc_onecut40 = yuanxia_dsc_onecut[yuanxia_dsc['time_pressure'] == 40]
+yuanxia_gtc_onecut40 = yuanxia_gtc_onecut[yuanxia_gtc['time_pressure'] == 40]
 
 print('Stats for OneCut segmentation')
 print('Rau\'s strokes:')
@@ -144,12 +180,32 @@ print_pop_normality(rau_gtc_points_onecut, 'gtc')
 print_friedman(rau_dsc_points_onecut, 'dsc', dilation_radii)
 print_friedman(rau_gtc_points_onecut, 'gtc', dilation_radii)
 
-print('\nYuaxia\'s points:')
-print_mean_median(yuanxia_dsc_onecut, 'dsc', dilation_radii)
-print_mean_median(yuanxia_gtc_onecut, 'gtc', dilation_radii)
-print_wilcoxon(yuanxia_dsc_onecut, 'dsc', 0, 4)
-print_wilcoxon(yuanxia_gtc_onecut, 'gtc', 0, 4)
-print_pop_normality(yuanxia_dsc_onecut, 'dsc')
-print_pop_normality(yuanxia_gtc_onecut, 'gtc')
-print_friedman(yuanxia_dsc_onecut, 'dsc', dilation_radii)
-print_friedman(yuanxia_gtc_onecut, 'gtc', dilation_radii)
+print('\nYuaxia\'s points (time pressure 15):')
+print_mean_median(yuanxia_dsc_onecut15, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc_onecut15, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc_onecut15, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc_onecut15, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc_onecut15, 'dsc')
+print_pop_normality(yuanxia_gtc_onecut15, 'gtc')
+print_friedman(yuanxia_dsc_onecut15, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc_onecut15, 'gtc', dilation_radii)
+
+print('\nYuaxia\'s points (time pressure 25):')
+print_mean_median(yuanxia_dsc_onecut25, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc_onecut25, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc_onecut25, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc_onecut25, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc_onecut25, 'dsc')
+print_pop_normality(yuanxia_gtc_onecut25, 'gtc')
+print_friedman(yuanxia_dsc_onecut25, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc_onecut25, 'gtc', dilation_radii)
+
+print('\nYuaxia\'s points (time pressure 40):')
+print_mean_median(yuanxia_dsc_onecut40, 'dsc', dilation_radii)
+print_mean_median(yuanxia_gtc_onecut40, 'gtc', dilation_radii)
+print_wilcoxon(yuanxia_dsc_onecut40, 'dsc', 0, 4)
+print_wilcoxon(yuanxia_gtc_onecut40, 'gtc', 0, 4)
+print_pop_normality(yuanxia_dsc_onecut40, 'dsc')
+print_pop_normality(yuanxia_gtc_onecut40, 'gtc')
+print_friedman(yuanxia_dsc_onecut40, 'dsc', dilation_radii)
+print_friedman(yuanxia_gtc_onecut40, 'gtc', dilation_radii)
