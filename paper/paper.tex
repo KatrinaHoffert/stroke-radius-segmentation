@@ -1,0 +1,81 @@
+%% Regular, article-style document with 12pt font and A4 sized paper
+\documentclass[12pt,a4paper]{article}
+
+%% UTF-8 support
+\usepackage[utf8]{inputenc}
+
+%% Basic packages for formulas, symbols, etc
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multirow}
+
+%% Clean paragraph spacing
+\usepackage{parskip}
+
+% For page margins
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+%% Hyperlink support
+\usepackage{hyperref}
+
+%% Image support
+\usepackage{graphicx}
+
+%% For description sections (indentable lists)
+\usepackage{enumitem}
+
+%% Font improvements
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%% Header and footer styles (page number centered at the bottom)
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Page numbering
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{} %% Remove the default header/footer
+\renewcommand{\headrulewidth}{0pt} %% Remove the header bar
+\cfoot{\thepage} %% New footer content
+
+\begin{document}
+
+%% Abstract
+\begin{abstract}
+TODO
+
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{An intro to image segmentation}
+
+\subsection{Problem}
+
+\subsection{Data sources}
+
+\section{Experiment structure}
+
+\subsection{Overview}
+
+\subsection{Dilation}
+
+\subsection{Segmentation programs}
+
+\section{Results}
+
+\subsection{Methods of analysis}
+
+\subsection{Effects on accuracy}
+
+\subsection{Effects on reproducibility}
+
+\subsection{Effects with other segmentation algorithms}
+
+\section{Discussion}
+
+\section{References}
+
+\end{document}
