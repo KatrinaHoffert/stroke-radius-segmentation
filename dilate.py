@@ -15,8 +15,6 @@ def no_error_dilate(input_image, ground_truth_image, output_image, dilation_radi
     'place' (foreground pixels won't be dilated if they're in the background
     and vice versa).
     
-    All non-zero labels will be dilated.
-    
     input_image: The label image to dilate.
     ground_truth_image: The binary ground truth image.
     output_image: Where to save the result.
@@ -65,7 +63,31 @@ def no_error_dilate(input_image, ground_truth_image, output_image, dilation_radi
         it.iternext()
     
     Image.fromarray(output).save(output_image)
+
+def check_no_error_dilate(input_image, ground_truth_image, foreground_label = 255, background_label = 128):
+    '''
+    Returns true if no_error_dilate would act differently than textbook_dilation.
     
+    input_image: The label image to dilate.
+    ground_truth_image: The binary ground truth image.
+    '''
+    image = scipy.ndimage.imread(input_image)
+    ground_truth = np.greater(scipy.ndimage.imread(ground_truth_image), 0)
+    
+    # Iterate over all pixels for dilation
+    it = np.nditer(image, flags=['multi_index'])
+    while not it.finished:
+        pixel = int(it[0])
+
+        if pixel == foreground_label and not ground_truth[it.multi_index]:
+            return True
+        elif pixel == background_label and ground_truth[it.multi_index]:
+            return True
+        
+        it.iternext()
+    
+    return False
+
 def textbook_dilation(input_image, output_image, dilation_radius):
     '''
     Dilates all pixels a given radius (which excludes the pixel in question, so
